@@ -1,0 +1,79 @@
+﻿<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css"
+        integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<div class="p-4">
+    <div class="container">
+        <h1>Hi {{user.firstName}}!</h1>
+        <p><a routerLink="/users">Manage Users</a></p>
+        <p><a routerLink="/leads">Manage Leads</a></p>
+    </div>
+</div>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card card-default shadow rounded">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <ul class="tabs-container">
+                                <li (click)="onTabClick('Invited')" [class.active]="activeTab == 'Invited'"
+                                    class="tab-link">Invited
+                                </li>
+                                <li (click)="onTabClick('Accepted')" [class.active]="activeTab == 'Accepted'"
+                                    class="tab-link">Accepted
+                                </li>
+                            </ul>
+                            <div *ngIf="activeTab == 'Invited'" class="w-120">
+                                <div class="col-7">
+                                    <div *ngFor="let lead of leads">
+                                        <div class="w3-card-7 w3-white" style="width:70%">
+                                            <span class="w3-badge w3-orange">{{lead.firstName[0]}}</span>
+                                            <h3>{{lead.firstName}}</h3>
+                                            <h5>{{lead.dateCreate}}</h5>
+                                            <i class="fa fa-map-pin"></i>{{lead.suburb}}
+                                            <i class="fa fa-suitcase"></i>{{lead.category}}
+                                            Job ID: {{lead.id}}
+                                            <div>{{lead.description}}</div>
+                                            <div class="w3-section">
+                                                <button (click)="acceptLead(lead.id)"
+                                                    class="w3-button w3-orange">Accept</button>
+                                                <button (click)="declineLead(lead.id)"
+                                                    class="w3-button w3-gray">Decline</button>
+                                                ${{lead.price}} Lead Invitation
+                                            </div>
+                                        </div>
+                                    <hr>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div *ngIf="activeTab == 'Accepted'" class="w-120">
+                                <div class="col-7">
+                                    <div *ngFor="let lead of leads">
+                                        <div class="w3-card-7 w3-white" style="width:70%">
+                                            <span class="w3-badge w3-orange">{{lead.firstName[0]}}</span>
+                                            <h3>{{lead.firstName}} {{lead.lastName}}</h3>
+                                            <h5>{{lead.dateCreate}}</h5>
+                                            <i class="fa fa-map-pin"></i>{{lead.suburb}}
+                                            <i class="fa fa-suitcase"></i>{{lead.category}}
+                                            Job ID: {{lead.id}}
+                                            ${{lead.price}} Lead Invitation
+                                            <div>
+                                                <i class="fa fa-phone"></i>{{lead.phone}}
+                                                <i class="fa fa-envelope"></i>{{lead.email}}
+                                            </div>
+                                            <div>{{lead.description}}</div>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
