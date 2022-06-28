@@ -18,7 +18,7 @@
             <td>{{lead.email}}</td>
             <td style="white-space: nowrap">
                 <a routerLink="edit/{{lead.id}}" class="btn btn-sm btn-primary mr-1">Edit</a>
-                <button (click)="deletelead(lead.id)" class="btn btn-sm btn-danger btn-delete-lead" [disabled]="lead.isDeleting">
+                <button (click)="deleteLead(lead.id)" class="btn btn-sm btn-danger btn-delete-lead" [disabled]="lead.isDeleting">
                     <span *ngIf="lead.isDeleting" class="spinner-border spinner-border-sm"></span>
                     <span *ngIf="!lead.isDeleting">Delete</span>
                 </button>
