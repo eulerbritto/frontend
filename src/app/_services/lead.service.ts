@@ -24,23 +24,6 @@ export class LeadService {
         return this.leadSubject.value;
     }
 
-    // login(username, password) {
-    //     return this.http.post<User>(`${environment.apiUrl}/leads/authenticate`, { username, password })
-    //         .pipe(map(user => {
-    //             // store user details and jwt token in local storage to keep user logged in between page refreshes
-    //             localStorage.setItem('user', JSON.stringify(user));
-    //             this.userSubject.next(user);
-    //             return user;
-    //         }));
-    // }
-
-    // logout() {
-    //     // remove user from local storage and set current user to null
-    //     localStorage.removeItem('user');
-    //     this.userSubject.next(null);
-    //     this.router.navigate(['/account/login']);
-    // }
-
     create(lead: Lead) {
         return this.http.post(`${environment.apiUrl}/leads/create`, lead);
     }
@@ -105,11 +88,14 @@ export class LeadService {
             }));
     }
 
-    delete(id: string) {
+    delete(id: number) {
         return this.http.delete(`${environment.apiUrl}/leads/${id}`)
             .pipe(map(x => {
-                // auto logout if the logged in lead deleted their own record
+                // auto logout if the logged in user deleted their own record
                 return x;
             }));
     }
+
+
+
 }

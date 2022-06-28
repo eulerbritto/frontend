@@ -2,12 +2,12 @@
     id: number;
     firstName: string;
     lastName:string;
-    dateCreate: Date;
+    dateCreated: Date;
     suburb:string;
-    category:string;
+    category:number;
     description:string;
     price:number;
     phone:string;
     email:string;
-    status:string;
+    status:number;
  }

@@ -35,7 +35,7 @@ export class AddEditComponent implements OnInit {
             firstName: ['', Validators.required],
             lastName: ['', Validators.required],
             suburb: ['', Validators.required],
-            dateCreate: ['', Validators.required],
+            dateCreated: ['', Validators.required],
             phone: ['', Validators.required],
             email: ['', Validators.required],
             category: ['', Validators.required],
@@ -73,6 +73,8 @@ export class AddEditComponent implements OnInit {
     }
 
     private createLead() {
+        console.log('valid: ', this.form.valid);
+        console.log(this.form.value);
         this.leadService.create(this.form.value)
             .pipe(first())
             .subscribe({

@@ -16,8 +16,7 @@
     float: left;
     text-align: center;
     }
-    
-    
+        
     .tab-link::after {
         position: absolute;
         left: 4px;
@@ -69,3 +68,8 @@
                 flex-direction: row;
     }
     
+    div.centered      { width: 20px; }
+    div.columns       { width: 600px;  margin: 0 auto;}
+    div.columns div   { width: 200px; height: auto; float: left; }
+    div.white         { background-color: #ffffff; }
+    div.clear         { clear: both; }
