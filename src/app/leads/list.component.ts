@@ -7,18 +7,18 @@ import { LeadService } from '@app/_services';
 export class ListComponent implements OnInit {
     leads = null;
 
-    constructor(private accountService: LeadService) {}
+    constructor(private leadService: LeadService) {}
 
     ngOnInit() {
-        this.accountService.getAll()
+        this.leadService.getAll()
             .pipe(first())
             .subscribe(leads => this.leads = leads);
     }
 
-    deleteUser(id: string) {
+    deleteLead(id: number) {
         const leads = this.leads.find(x => x.id === id);
         leads.isDeleting = true;
-        this.leads.delete(id)
+        this.leadService.deleteLead(id)
             .pipe(first())
             .subscribe(() => this.leads = this.leads.filter(x => x.id !== id));
     }
